@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+    <TITLE> ZTREE DEMO </TITLE>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="zTree_v3-master/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="zTree_v3-master/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="zTree_v3-master/js/jquery.ztree.core.min.js"></script>
+    <SCRIPT LANGUAGE="JavaScript">
+        var zTreeObj;
+        // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+        var setting = {};
+        // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+        var zNodes = [
+            {
+                name: "导师", open: true, children: [
+                    {
+                        name: "张三", open: true, children: [
+                            {
+                                name: "2016级博士生", open: true, children: [
+                                    {name: "天一"}, {name: "王二"}, {name: "吴五"}]
+                            },
+                            {
+                                name: "2015级硕士生", open: true, children: [
+                                    {name: "李四"}, {name: "王五"}, {name: "许六"}]
+                            },
+                            {
+                                name: "2016级硕士生", open: true, children: [
+                                    {name: "刘一"}, {name: "李二"}, {name: "李三"}]
+                            },
+                            {
+                                name: "2017级本科生", open: true, children: [
+                                    {name: "刘六"}, {name: "琪七"}, {name: "司四"}]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ];
+        $(document).ready(function(){
+            zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        });
+        function jiexi() {
+        }
+    </SCRIPT>
+<!-- 导师：张三
+2016级博士生：天一、王二、吴五
+2015级硕士生：李四、王五、许六
+2016级硕士生：刘一、李二、李三
+2017级本科生：刘六、琪七、司四  -->
+</HEAD>
+<BODY>
+<p>师门树</p>
+    <textarea id="wb"></textarea>
+    <input type="button" onclick="jiexi()" value="提交"><br>
+<div>
+    <ul id="treeDemo" class="ztree"></ul>
+</div>
+</BODY>
+</HTML>
