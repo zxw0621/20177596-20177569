@@ -2,6 +2,18 @@
 <HTML>
 <HEAD>
     <TITLE> ZTREE DEMO </TITLE>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="UI/resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="UI/resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="UI/data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="UI/files/index/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="UI/resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="UI/resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="UI/resources/scripts/prototypePre.js"></script>
+    <script src="UI/data/document.js"></script>
+    <script src="UI/resources/scripts/prototypePost.js"></script>
+    <script src="UI/files/index/data.js"></script>
     <link rel="stylesheet" href="zTree_v3-master/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <script type="text/javascript" src="zTree_v3-master/js/jquery-1.4.4.min.js"></script>
     <script type="text/javascript" src="zTree_v3-master/js/jquery.ztree.core.min.js"></script>
@@ -61,13 +73,13 @@
         }
         function nodeback() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementById("testp").innerHTML = xmlhttp.responseText;
+            document.getElementById("u6_div").innerHTML = xmlhttp.responseText;
             }
 
         }
 
         $(document).ready(function () {
-            zTreeObj = $.fn.zTree.init($("#tree"), setting, zNodes);
+            zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
         });
     </SCRIPT>
     <!-- 导师：张三
@@ -77,17 +89,51 @@
     2017级本科生：刘六、琪七、司四  -->
 </HEAD>
 <BODY>
-<p>师门树</p>
-<form action="">
-    <textarea id="wb" name="wbk"></textarea>
-    <input type="submit">
-    <input type="button" onclick="node(document.getElementById('wb').value)" value="生成树"></input><br>
-    <input type="button" onclick="document.getElementById('wb').value=''" value="重置"></input><br>
-</form>
-<div id="treediv">
-    <ul id="tree" class="ztree"></ul><br>
-    <p id="testp"></p>
-</div>
-<iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
+    <!-- Unnamed (矩形) -->
+    <div id="u0" class="ax_default box_2">
+        <div id="u0_div" class=""></div>
+    </div>
+
+    <!-- Unnamed (组 合) -->
+    <div id="u1" class="ax_default" data-left="237" data-top="0" data-width="515" data-height="606">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u2" class="ax_default _一级标题">
+            <div id="u2_div" class=""></div>
+            <div id="u2_text" class="text ">
+                <p><span>师门树</span></p>
+            </div>
+        </div>
+
+        <!-- Unnamed (多行文本框) -->
+        <div id="u3" class="ax_default text_area">
+            <textarea id="u3_input"></textarea>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4" class="ax_default primary_button">
+            <div id="u4_div" class=""></div>
+            <div id="u4_text" class="text ">
+                <p><span onclick="node(document.getElementById('u3_input').value)">生成树</span></p>
+            </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u5" class="ax_default button">
+            <div id="u5_div" class=""></div>
+            <div id="u5_text" class="text ">
+                <p><span onclick="document.getElementById('u3_input').value=''">重置</span></p>
+            </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u6" class="ax_default box_1">
+
+            <div id="u6_div" class="">
+                <ul id="treeDemo" class="ztree"></ul>
+            </div>
+
+        </div>
+    </div>
 </BODY>
 </HTML>
