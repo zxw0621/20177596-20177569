@@ -2,12 +2,13 @@
   <artifact type="exploded-war" name="20177596&amp;20177569:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/20177596_20177569_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="20177596&amp;20177569/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="20177596&amp;20177569" />
+          <element id="javaee-facet-classes" facet="20177596&amp;20177569/web/Web" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="20177596&amp;20177569/web/Web" />
     </root>
   </artifact>
 </component>

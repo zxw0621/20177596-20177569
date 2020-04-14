@@ -51,21 +51,20 @@ public class node {
         return shu;
     }
     public static void main(String args[]){
-        String str = new String();
         node demo = new node();
-        str = "导师：张三\n" +
-                "2016级博士生：天一、王二、吴五\n" +
-                "2015级硕士生：李四、王五、许六\n" +
-                "2016级硕士生：刘一、李二、李三\n" +
-                "2017级本科生：刘六、琪七、司四";
-        List<node> nodeList = (List<node>)demo.jiexi(str);
+    String str = "导师：张三\n" +
+            "2016级博士生：天一、王二、吴五\n" +
+            "2015级硕士生：李四、王五、许六\n" +
+            "2016级硕士生：刘一、李二、李三\n" +
+            "2017级本科生：刘六、琪七、司四";
+    List<node> nodeList = (List<node>)demo.jiexi(str);
         for(node node :nodeList){
-            System.out.println(node.getName());
-            if(node.getList()!=null){
-                for(int i=0;i<=node.getList().size()-1;i++){
-                    System.out.println(node.getList().get(i));
-                }
+        System.out.println(node.getName());
+        if(node.getList()!=null){
+            for(int i=0;i<=node.getList().size()-1;i++){
+                System.out.println(node.getList().get(i));
             }
         }
     }
+}
 }
