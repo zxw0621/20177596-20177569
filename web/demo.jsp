@@ -18,16 +18,34 @@
     <script type="text/javascript" src="zTree_v3-master/js/jquery-1.4.4.min.js"></script>
     <script type="text/javascript" src="zTree_v3-master/js/jquery.ztree.core.min.js"></script>
     <SCRIPT LANGUAGE="JavaScript">
-        var setting = {};
-        var sites = [
-            { "name":"runoob","children":"" },
-            { "name":"google","children":""  },
-            { "name":"微博","children":""  }
-        ];
-        sites[1].children=[{ "name":"runoob","children":"" },
-            { "name":"google","children":""  },
-            { "name":"微博","children":""  }];
-        var zNodes=sites;
+        var setting = {
+            data:{
+                simpleData:{
+                    enable:true,
+                    idKey:"id",
+                    pIdKey:"pId",
+                    rootPId:0
+                }
+            },
+            view:{
+                showLine:true,
+            },
+            async:{
+                enable:true,
+                url:"testservlet",
+                autoParam:["id","name","pId"]
+            }
+        };
+        var zNodes=[];
+        $.ajax({
+            url:"testservlet",
+            data:{},
+            type:"post",
+            datatype:"json",
+            success:function (data) {
+                zNodes=data;
+            }
+        })
         // var zNodes = [
         //     {
         //         name: "导师", open: true, children: [
@@ -54,33 +72,33 @@
         //         ]
         //     }
         // ];
-        var xmlhttp;
-        function createXMLHttp() {
-            if (window.XMLHttpRequest) {
-                // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                xmlhttp = new XMLHttpRequest();
-            } else {
-                // IE6, IE5 浏览器执行代码
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-        }
-        function node(wbk) {
-            createXMLHttp();
-            xmlhttp.open("POST","testservlet?wbk=" + wbk,false);
-            xmlhttp.send();
-            xmlhttp.onreadystatechange = nodeback();
-
-        }
-        function nodeback() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementById("u6_div").innerHTML = xmlhttp.responseText;
-            }
-
-        }
-
-        $(document).ready(function () {
-            zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
-        });
+        // var xmlhttp;
+        // function createXMLHttp() {
+        //     if (window.XMLHttpRequest) {
+        //         // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+        //         xmlhttp = new XMLHttpRequest();
+        //     } else {
+        //         // IE6, IE5 浏览器执行代码
+        //         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        //     }
+        // }
+        // function node(wbk) {
+        //     createXMLHttp();
+        //     xmlhttp.open("POST","testservlet?wbk=" + wbk,false);
+        //     xmlhttp.send();
+        //     xmlhttp.onreadystatechange = nodeback();
+        //
+        // }
+        // function nodeback() {
+        //     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        //     document.getElementById("u6_div").innerHTML = xmlhttp.responseText;
+        //     }
+        //
+        // }
+        //
+        // $(document).ready(function () {
+        //     zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        // });
     </SCRIPT>
     <!-- 导师：张三
     2016级博士生：天一、王二、吴五

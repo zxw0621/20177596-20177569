@@ -34,5 +34,6 @@
     </orderEntry>
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="jsp-api" level="project" />
+    <orderEntry type="library" name="json jar" level="project" />
   </component>
 </module>
