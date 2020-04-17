@@ -32,20 +32,19 @@
             },
             async:{
                 enable:true,
-                url:"testservlet",
-                autoParam:["id","name","pId"]
+                url:"nodeservlet",
+                autoParam:["name","pId","id"]
             }
         };
-        var zNodes=[];
-        $.ajax({
-            url:"testservlet",
-            data:{},
-            type:"post",
-            datatype:"json",
-            success:function (data) {
-                zNodes=data;
-            }
-        })
+        // $.ajax({
+        //     url:"nodeservlet",
+        //     data:{},
+        //     type:"post",
+        //     datatype:"json",
+        //     success:function (data) {
+        //         zNodes=data;
+        //     }
+        // })
         // var zNodes = [
         //     {
         //         name: "导师", open: true, children: [
@@ -72,33 +71,33 @@
         //         ]
         //     }
         // ];
-        // var xmlhttp;
-        // function createXMLHttp() {
-        //     if (window.XMLHttpRequest) {
-        //         // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-        //         xmlhttp = new XMLHttpRequest();
-        //     } else {
-        //         // IE6, IE5 浏览器执行代码
-        //         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        //     }
-        // }
-        // function node(wbk) {
-        //     createXMLHttp();
-        //     xmlhttp.open("POST","testservlet?wbk=" + wbk,false);
-        //     xmlhttp.send();
-        //     xmlhttp.onreadystatechange = nodeback();
-        //
-        // }
-        // function nodeback() {
-        //     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        //     document.getElementById("u6_div").innerHTML = xmlhttp.responseText;
-        //     }
-        //
-        // }
-        //
-        // $(document).ready(function () {
-        //     zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
-        // });
+        var xmlhttp;
+        function createXMLHttp() {
+            if (window.XMLHttpRequest) {
+                // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // IE6, IE5 浏览器执行代码
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        function node(wbk) {
+            createXMLHttp();
+            console.log(wbk)
+            xmlhttp.open("POST","nodeservlet?wbk=" + wbk,false);
+            xmlhttp.send();
+            xmlhttp.onreadystatechange = nodeback();
+
+        }
+        function nodeback() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var temp = eval("(" + xmlhttp.responseText+ ")");
+                var zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, temp);
+            }
+
+        }
+
+
     </SCRIPT>
     <!-- 导师：张三
     2016级博士生：天一、王二、吴五
@@ -143,12 +142,12 @@
                 <p><span onclick="document.getElementById('u3_input').value=''">重置</span></p>
             </div>
         </div>
-
         <!-- Unnamed (矩形) -->
         <div id="u6" class="ax_default box_1">
 
-            <div id="u6_div" class="">
+            <div id="u6_div" style="overflow: auto">
                 <ul id="treeDemo" class="ztree"></ul>
+
             </div>
 
         </div>

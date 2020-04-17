@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import com.alibaba.fastjson.JSON;
 import mybean.*;
 
 @WebServlet("/nodeservlet")
@@ -17,17 +18,14 @@ public class nodeServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out=response.getWriter();
         request.setCharacterEncoding("UTF-8");
-        String string=request.getParameter("wbk");
-            node demo = new node();
-            List<node> nodeList = (List<node>)demo.jiexi(string);
-            for(node node :nodeList){
-                out.write(node.getName());
-                if(node.getList()!=null){
-                    for(int i=0;i<=node.getList().size()-1;i++){
-                        out.write((String) node.getList().get(i));
-                    }
-                }
-            }
+        String wbk=request.getParameter("wbk");
+        wbk=wbk.replaceAll("    ","\n");
+        node demo = new node();
+        String jsonstr=JSON.toJSONString(demo.jiexi(wbk));
+        System.out.println(jsonstr);
+        out.print(jsonstr);
+        out.flush();
+        out.close();
         }
 
 

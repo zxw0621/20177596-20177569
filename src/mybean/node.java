@@ -71,11 +71,9 @@ public class node {
     public static void main(String args[]) {
         //测试
         node demo = new node();
-        String str = "导师：张三\n" +
-                "2016级博士生：天一、王二、吴五\n" +
-                "2015级硕士生：李四、王五、许六\n" +
-                "2016级硕士生：刘一、李二、李三\n" +
-                "2017级本科生：刘六、琪七、司四";
+        String str = "导师：张三    2016级博士生：天一、王二、吴五    2015级硕士生：李四、王五、许六    2016级硕士生：刘一、李二、李三    2017级本科生：刘六、琪七、司四\n";
+        str=str.replaceAll("    ","\n");
+        System.out.println(demo.jiexi(str));
 
         System.out.println(JSON.toJSONString(demo.jiexi(str)));
     }
